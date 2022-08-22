@@ -1,0 +1,33 @@
+ссылка на репозитарий:
+https://github.com/Heimdier/Luntaffer
+
+Коллеги, в нашей команде 3 разработчика - я главный и 2 junior
+-основная ветка master
+-каждый junior ведет свою ветку (имя ветки: фамилия_задача)
+- для настройки своей среды разработки используем git config из репозитария https://github.com/Heimdier/Luntaffer/blob/master/gitconf
+
+Слить себе репозитарий
+git clone https://github.com/Heimdier/Luntaffer
+cd Luntaffer
+
+создание ветки 
+git branch <имя>
+
+перейти на ветку
+git checkout -b <имя ветки>
+
+добавить файлы в индекс git
+git add <имя файла>
+
+принять изменения
+git commit -m "комментарий что сделано"
+
+залить изменения на гитхаб в свою ветку
+git push origin <ветка junior>
+
+создать pull request в ветку master на гитхаб
+
+после моего ревью кода junior'а изменения будут приняты в мастер ветку
+
+
+
