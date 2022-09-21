@@ -1,0 +1,25 @@
+---
+- hosts: localhost
+  gather_facts: no
+  become: true
+  tasks:
+
+  - name: Добавить пользователя
+    user:
+      name: user1
+      password: "{{ user_pass | password_hash('sha512') }}"
+      shell: /bin/bash
+      groups: sudo
+      append: yes
+
+  - name: Копировать pub SSH ключ для user1 в ~user1/.ssh/id_rsa
+    copy:
+      src: /etc/ansible/id_rsa.pub
+      dest: /home/user1/.ssh/id_rsa
+      remote_src: yes
+
+  - name: Установить authorized key из файла id_rsa.pub
+    authorized_key:
+      user: user1
+      state: present
+      key: "{{ lookup('file', '/home/user1/.ssh/id_rsa.pub') }}"
