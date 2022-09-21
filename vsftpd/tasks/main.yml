@@ -1,0 +1,19 @@
+---
+# tasks file for vsftpd
+- name: Install Vsftpd
+    package:
+      name: vsftpd
+      state: present
+
+  - name: Set configuration file
+  - lineinfile: dest=/etc/vsftpd.conf regexp='^anonymous_enable' line='anonymous_enable NO'
+  - lineinfile: dest=/etc/vsftpd.conf regexp='^local_enable' line='local_enable YES'
+  - lineinfile: dest=/etc/vsftpd.conf regexp='^write_enable' line='write_enable YES'
+    notify: restart vsftpd
+  
+  - name: Ensure service is started
+    service:
+      name: vsftpd
+      state: started
+      enabled: true
+
