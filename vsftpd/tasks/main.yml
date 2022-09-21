@@ -1,6 +1,6 @@
 ---
 # tasks file for vsftpd
-- name: Install Vsftpd
+  - name: Install Vsftpd
     package:
       name: vsftpd
       state: present
